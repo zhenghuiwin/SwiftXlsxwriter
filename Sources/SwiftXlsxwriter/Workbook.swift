@@ -11,7 +11,7 @@ import ExcelWriter
 public class Workbook {
     private var wb: UnsafeMutablePointer<lxw_workbook>
     
-    init(file: String) {
+    public init(file: String) {
         wb = workbook_new(file)
     }
     
