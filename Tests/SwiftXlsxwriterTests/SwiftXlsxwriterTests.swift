@@ -17,10 +17,9 @@ final class SwiftXlsxwriterTests: XCTestCase {
         XCTAssertNotNil(sheet)
         
         var row = 1
-        var col = 0
 
-        sheet!.writeString(row: row, col: col, content: "你好", format: nil)
-        var fmt = DateFormatter()
+        sheet!.writeString(row: row, col: 0, content: "你好", format: nil)
+        let fmt = DateFormatter()
         fmt.dateFormat = "MM月dd日"
         let cal = Calendar.current
         let now = Date()
@@ -43,34 +42,34 @@ final class SwiftXlsxwriterTests: XCTestCase {
         for c in 0 ..< header.count  {
             sheet!.writeString(row: row, col: c, content: header[c], format: nil)
         }
-//
-//        var type = ["天气状况", "最低气温", "最高气温", "云量"]
-//        var city = ["成都", "绵阳", "德阳", "雅安"]
-//
-//        let format = workbook_add_format(wb)
-//        format_set_border(format,  1)
-//        format_set_align(format, 2)
-//        format_set_align(format, 10)
-//
-//
-//        let eleNum: UInt32 = 3
-//        row += 1
-//        city.forEach { cityName in
-//            print("------------")
-//            print(row)
-//
-//            worksheet_merge_range(worksheet, row, 0, (row + eleNum), 0, cityName, format)
-//
-//            for r in 0 ..< 4 {
-//                worksheet_write_string(worksheet, row, 1, type[Int(r)], format)
-//                for c in 2 ..< 9 {
-//                   worksheet_write_string(worksheet, row, UInt16(c), "\(c)", format)
-//                }
-//                row += 1
-//                print(row)
-//            }
-//            print("该组生成完毕，为下一行准备: \(row)")
-//        }
+
+        var type = ["天气状况", "最低气温", "最高气温", "云量"]
+        let city = ["成都", "绵阳", "德阳", "雅安"]
+
+        let format = wb.addFormat()
+        XCTAssertNotNil(format)
+        format!.setBorder(type: .thin)
+        format!.setAlign(type: .center)
+        format!.setAlign(type: .verticalCenter)
+
+        let eleNum = 3
+        row += 1
+        city.forEach { cityName in
+            print("------------")
+            print(row)
+
+            sheet!.mergeRange(firstRow: row, firstCol: 0, lastRow: (row + eleNum), lastCol: 0, content: cityName, format: format!)
+
+            for r in 0 ..< 4 {
+                sheet!.writeString(row: row, col: 1, content: type[Int(r)], format: format!)
+                for c in 2 ..< 9 {
+                    sheet!.writeString(row: row, col: c, content: "\(c)", format: format!)
+                }
+                row += 1
+                print(row)
+            }
+            print("该组生成完毕，为下一行准备: \(row)")
+        }
 //
 //
 //

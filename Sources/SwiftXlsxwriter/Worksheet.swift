@@ -8,15 +8,20 @@
 import Foundation
 import ExcelWriter
 
-public class Worksheet {
-    private var ws: UnsafeMutablePointer<lxw_worksheet>
+public struct Worksheet {
+    private let ws: UnsafeMutablePointer<lxw_worksheet>
     
     public init(_ ws: UnsafeMutablePointer<lxw_worksheet>) {
         self.ws = ws
     }
     
     //  worksheet_write_string(worksheet, row, UInt16(c), header[c], nil)
-    public func writeString(row: Int,  col: Int, content: String, format: UnsafeMutablePointer<lxw_format>?) {
-        worksheet_write_string(ws, UInt32(row), UInt16(col), content, format)
+    public func writeString(row: Int,  col: Int, content: String, format: Format?) {
+        worksheet_write_string(ws, UInt32(row), UInt16(col), content, format?.rawValue)
+    }
+    
+    // worksheet_merge_range(worksheet, row, 0, (row + eleNum), 0, cityName, format)
+    public func mergeRange(firstRow: Int, firstCol: Int, lastRow: Int, lastCol: Int, content: String, format: Format) {
+        worksheet_merge_range(ws, UInt32(firstRow), UInt16(firstCol), UInt32(lastRow), UInt16(lastCol), content, format.rawValue)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import ExcelWriter
 
 public class Workbook {
-    private var wb: UnsafeMutablePointer<lxw_workbook>
+    private let wb: UnsafeMutablePointer<lxw_workbook>
     
     public init(file: String) {
         wb = workbook_new(file)
@@ -26,5 +26,12 @@ public class Workbook {
         }
         
         return  Worksheet(sheet)
+    }
+    
+    public func addFormat() -> Format? {
+        guard let fmt = workbook_add_format(wb) else {
+            return nil
+        }
+        return Format(fmt)
     }
 }
