@@ -69,13 +69,7 @@ final class SwiftXlsxwriterTests: XCTestCase {
                 print(row)
             }
             print("该组生成完毕，为下一行准备: \(row)")
-        }
-//
-//
-//
-//
-//        let rt1 = workbook_close(wb)
-        // print("rt: \( lxw_strerror(rt)); \( lxw_strerror(rt1))")
+        } // city.forEach
     }
 
     static var allTests = [

@@ -33,6 +33,10 @@ public struct Format {
         format_set_align(fmt, type.rawValue)
     }
     
+    public func setFont(size: Double) {
+        format_set_font_size(fmt, size)
+    }
+    
     
 }
 
