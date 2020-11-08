@@ -24,4 +24,9 @@ public struct Worksheet {
     public func mergeRange(firstRow: Int, firstCol: Int, lastRow: Int, lastCol: Int, content: String, format: Format) {
         worksheet_merge_range(ws, UInt32(firstRow), UInt16(firstCol), UInt32(lastRow), UInt16(lastCol), content, format.rawValue)
     }
+    
+    // sheet.setColumn(firstCol: 0, lastCol: 10, width: 15, format: nil)
+    public func setColumn(firstCol: UInt16, lastCol: UInt16, width: Double, format: Format) {
+        worksheet_set_column(ws, firstCol, lastCol, width, format.rawValue)
+    }
 }
