@@ -26,7 +26,7 @@ public struct Worksheet {
     }
     
     // sheet.setColumn(firstCol: 0, lastCol: 10, width: 15, format: nil)
-    public func setColumn(firstCol: UInt16, lastCol: UInt16, width: Double, format: Format) {
-        worksheet_set_column(ws, firstCol, lastCol, width, format.rawValue)
+    public func setColumn(firstCol: UInt16, lastCol: UInt16, width: Double, format: Format?) {
+        worksheet_set_column(ws, firstCol, lastCol, width, format?.rawValue)
     }
 }
