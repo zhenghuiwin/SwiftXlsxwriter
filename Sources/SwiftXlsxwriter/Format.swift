@@ -41,6 +41,10 @@ public struct Format {
         format_set_bg_color(fmt, bgColor)
     }
     
+    public func set(borderColor: UInt32) {
+        format_set_border_color(fmt, borderColor)
+    }
+    
     
 }
 
