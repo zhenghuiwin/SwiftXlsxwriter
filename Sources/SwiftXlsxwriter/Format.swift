@@ -37,7 +37,7 @@ public struct Format {
         format_set_font_size(fmt, size)
     }
     
-    public func set(bgColor: Uint32) {
+    public func set(bgColor: UInt32) {
         format_set_bg_color(fmt, bgColor)
     }
     
