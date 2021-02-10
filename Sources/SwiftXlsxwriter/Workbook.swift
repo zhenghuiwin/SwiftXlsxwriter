@@ -16,7 +16,7 @@ public class Workbook {
     }
     
     deinit {
-        workbook_close(wb)
+        self.close()
     }
     
     // workbook_add_worksheet
@@ -33,5 +33,9 @@ public class Workbook {
             return nil
         }
         return Format(fmt)
+    }
+    
+    public func close() {
+        workbook_close(wb)
     }
 }
