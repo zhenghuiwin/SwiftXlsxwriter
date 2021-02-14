@@ -70,6 +70,9 @@ final class SwiftXlsxwriterTests: XCTestCase {
             }
             print("该组生成完毕，为下一行准备: \(row)")
         } // city.forEach
+        
+        let error = wb.close()
+        print("wb.close: \(error)")
     }
 
     static var allTests = [

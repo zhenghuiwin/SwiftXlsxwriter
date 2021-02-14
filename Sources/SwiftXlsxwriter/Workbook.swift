@@ -35,7 +35,7 @@ public class Workbook {
         return Format(fmt)
     }
     
-    public func close() -> UInt8 {
+    public func close() -> lxw_error {
         return workbook_close(wb)
     }
 }
