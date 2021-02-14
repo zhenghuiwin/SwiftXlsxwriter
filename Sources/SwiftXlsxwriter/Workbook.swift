@@ -15,9 +15,9 @@ public class Workbook {
         wb = workbook_new(file)
     }
     
-    deinit {
-        self.close()
-    }
+//    deinit {
+//        self.close()
+//    }
     
     // workbook_add_worksheet
     public func addWorksheet(sheetName: String?) -> Worksheet? {
@@ -35,7 +35,7 @@ public class Workbook {
         return Format(fmt)
     }
     
-    public func close() {
-        workbook_close(wb)
+    public func close() -> Int {
+        return workbook_close(wb)
     }
 }
