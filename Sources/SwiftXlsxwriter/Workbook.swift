@@ -35,7 +35,7 @@ public class Workbook {
         return Format(fmt)
     }
     
-    public func close() -> Int {
+    public func close() -> UInt8 {
         return workbook_close(wb)
     }
 }
