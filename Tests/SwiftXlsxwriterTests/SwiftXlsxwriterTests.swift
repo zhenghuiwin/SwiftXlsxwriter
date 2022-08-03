@@ -12,7 +12,7 @@ final class SwiftXlsxwriterTests: XCTestCase {
     }
     
     func testWb() {
-        let wb = Workbook(file: "./testtest.xlsx")
+        let wb = Workbook(file: "/Users/zhenghuiwin/Dropbox/workspace/swift_on_server/SwiftXlsxwriter/testtest.xlsx")
         let sheet: Worksheet? = wb.addWorksheet(sheetName: "sheet1")
         XCTAssertNotNil(sheet)
         

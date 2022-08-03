@@ -1,4 +1,4 @@
 module ExcelWriter {
-	umbrella header "xlsxwriter.h"
+	umbrella header "header.h"
 	link "xlsxwriter"
 }
